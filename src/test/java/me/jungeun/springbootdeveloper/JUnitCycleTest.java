@@ -3,6 +3,7 @@ package me.jungeun.springbootdeveloper;
 import org.junit.jupiter.api.*;
 
 public class JUnitCycleTest {
+    // JUnit 생명 주기: @BeforeEach -> @Test -> @AfterEach
 
     @BeforeAll // 전체 테스트를 시작하기 전에 1회 실행하므로 메서드는 static으로 선언 | 테스트 환경 초기화 시 사용
     static void beforeAll(){
