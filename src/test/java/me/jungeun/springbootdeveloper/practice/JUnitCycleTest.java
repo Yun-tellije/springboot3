@@ -1,4 +1,4 @@
-package me.jungeun.springbootdeveloper;
+package me.jungeun.springbootdeveloper.practice;
 
 import org.junit.jupiter.api.*;
 

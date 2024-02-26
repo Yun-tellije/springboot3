@@ -1,5 +1,7 @@
-package me.jungeun.springbootdeveloper;
+package me.jungeun.springbootdeveloper.practice;
 
+import me.jungeun.springbootdeveloper.practice.Member;
+import me.jungeun.springbootdeveloper.practice.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
