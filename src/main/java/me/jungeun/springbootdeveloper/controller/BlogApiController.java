@@ -34,7 +34,7 @@ public class BlogApiController {
     @GetMapping("api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticles(){
         List<ArticleResponse> articles = blogService.findAll()
-                .stream()
+                .stream() // 여러 데이터가 모여있는 컬렉션을 간편하게 처리하기 위한 기능
                 .map(ArticleResponse::new)
                 .toList();
 
