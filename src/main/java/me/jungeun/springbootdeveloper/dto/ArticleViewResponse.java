@@ -15,7 +15,7 @@ public class ArticleViewResponse {
     private String content;
     private LocalDateTime createdAt;
 
-    public ArticleListViewResponse(Article article){
+    public ArticleViewResponse(Article article){
         this.id = article.getId();
         this.title = article.getTitle();
         this.content = article.getContent();;
