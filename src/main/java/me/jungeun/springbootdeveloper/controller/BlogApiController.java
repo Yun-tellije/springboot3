@@ -28,7 +28,7 @@ public class BlogApiController {
                 .body(savedArticle);
     }
 
-    @GetMapping("api/articles")
+    @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticles(){
         List<ArticleResponse> articles = blogService.findAll()
                 .stream() // 여러 데이터가 모여있는 컬렉션을 간편하게 처리하기 위한 기능
@@ -38,11 +38,20 @@ public class BlogApiController {
         return ResponseEntity.ok().body(articles);
     }
 
-    @GetMapping("api/articles/{id}") // URL 경로에서 값 추출
-    public ResponseEntity<ArticleResponse> findArticle(@PathVariable Long id){ // @PathVariable -> URL에서 id에 해당하는 값 받음
+    @GetMapping("/api/articles/{id}") // URL 경로에서 값 추출
+    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id){ // @PathVariable -> URL에서 id에 해당하는 값 받음
         Article article = blogService.findById(id);
 
         return ResponseEntity.ok()
                 .body(new ArticleResponse(article));
     }
+
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
+        blogService.delete(id);
+
+        return ResponseEntity.ok()
+                .build();
+    }
+
 }
