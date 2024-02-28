@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 접근 제어자가 protected인 기본 생성자 생성
 public class Article {
 
-
     @Id // id 필드를 기본키로 지정
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동으로 1씩 증가
     @Column(name = "id", updatable = false)
@@ -30,4 +29,8 @@ public class Article {
         this.content = content;
     }
 
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 }
