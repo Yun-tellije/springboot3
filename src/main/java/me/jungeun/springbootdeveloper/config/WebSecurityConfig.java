@@ -1,6 +1,5 @@
 package me.jungeun.springbootdeveloper.config;
 
-
 import lombok.RequiredArgsConstructor;
 import me.jungeun.springbootdeveloper.service.UserDetailService;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +25,7 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
                 .requestMatchers(toH2Console()) // 리소스와 h2의 데이터를 확인할 때 사용
-                .requestMatchers("/statilc/**");
+                .requestMatchers("/static/**");
     }
 
     @Bean
@@ -34,7 +33,7 @@ public class WebSecurityConfig {
     //    인증/인가 및 로그인, 로그아웃 관련 설정
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests() // 3) 인증, 인가 설정
+                .authorizeRequests() // 3) 인증, 인가 설정
                 .requestMatchers("/login", "/signup", "/user").permitAll()
                 // 특정 요청과 일치하는 url에 대한 액세스 설정 | permitAll(): 누구나 접근 가능하게 설정
                 .anyRequest().authenticated()
@@ -56,7 +55,7 @@ public class WebSecurityConfig {
     // 7) 인증 관리자 관련 설정
     //    사용자 정보를 가져올 서비스를 재정의, 인증 방법을 설정할 때 사용
     public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder,
-                                                       UserDetailService userService) throws Exception {
+                                                       UserDetailService userDetailService) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(userService) // 8) 사용자 정보 서비스 설정 | UserDetailsService를 상속받은 클래스여야 함
                 .passwordEncoder(bCryptPasswordEncoder) // 비밀번호 암호화를 위한 인코더 설정

@@ -1,6 +1,5 @@
 package me.jungeun.springbootdeveloper.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import me.jungeun.springbootdeveloper.domain.Article;
 import me.jungeun.springbootdeveloper.dto.AddArticleRequest;

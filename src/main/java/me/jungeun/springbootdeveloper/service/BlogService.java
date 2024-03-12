@@ -1,6 +1,5 @@
 package me.jungeun.springbootdeveloper.service;
 
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.jungeun.springbootdeveloper.domain.Article;
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor // final이 붙거나 @NotNull이 붙은 필드의 생성자 추가, 빈을 생성자로 생성하는 lombok에서 지원
 @Service // 빈으로 등록
+@RequiredArgsConstructor // final이 붙거나 @NotNull이 붙은 필드의 생성자 추가, 빈을 생성자로 생성하는 lombok에서 지원
 public class BlogService {
 
     private final BlogRepository blogRepository;

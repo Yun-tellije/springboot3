@@ -20,7 +20,8 @@ public class BlogViewController {
 
     @GetMapping("/articles")
     public String getArticles(Model model){
-        List<ArticleListViewResponse> articles = blogService.findAll().stream()
+        List<ArticleListViewResponse> articles = blogService.findAll()
+                .stream()
                 .map(ArticleListViewResponse::new)
                 .toList();
         model.addAttribute("articles", articles); // 블로그 글 리스트 저장
