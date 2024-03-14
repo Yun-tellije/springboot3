@@ -38,4 +38,16 @@ public class TokenProvider {
                 .compact();
 
     }
+
+    // JWT 토큰 유효성 검증 메서드
+    public boolean vaildToken(String token) {
+        try{
+            Jwts.parser()
+                    .setSigningKey(jwtProperties.getSecretKey()) // 비밀값으로 복호화
+                    .parseClaimsJws(token);
+            return true;
+        } catch(Exception e) { // 복호화 과정에서 에러가 나면 유효하지 않은 토큰
+            return false;
+        }
+    }
 }
